@@ -1,0 +1,243 @@
+/*
+assets/style.css
+DataSphere — Styles globaux Dashboard Bancaire (dark premium)
+*/
+
+/* ── Variables ─────────────────────────────────────────────────────── */
+:root {
+    --ds-bg:       #080C14;
+    --ds-surface:  #0F1624;
+    --ds-card:     #1C2540;
+    --ds-border:   rgba(255,255,255,0.08);
+    --ds-accent:   #6366F1;
+    --ds-text:     #F1F5F9;
+    --ds-text2:    #94A3B8;
+    --ds-text3:    #475569;
+    --ds-font:     'Space Grotesk', sans-serif;
+    --ds-font-h:   'Plus Jakarta Sans', sans-serif;
+}
+
+/* ── KPI Cards ─────────────────────────────────────────────────────── */
+.kpi-card {
+    background: var(--ds-card);
+    border: 1px solid var(--ds-border);
+    border-radius: 16px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.kpi-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ds-text2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-family: 'Space Mono', monospace;
+}
+.kpi-value {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--ds-text);
+    letter-spacing: -0.03em;
+    font-family: var(--ds-font-h);
+    line-height: 1.2;
+    margin: 0;
+}
+.kpi-sub {
+    font-size: 11px;
+    color: var(--ds-text3);
+    margin: 4px 0 0;
+}
+
+/* ── Dark Dropdown Overrides ──────────────────────────────────────── */
+.dark-dropdown .Select-control,
+.dark-dropdown .VirtualizedSelectFocusedOption {
+    background-color: #161D2E !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #F1F5F9 !important;
+}
+.dark-dropdown .Select-menu-outer {
+    background-color: #161D2E !important;
+    border-color: rgba(255,255,255,0.12) !important;
+}
+.dark-dropdown .Select-option {
+    background-color: #161D2E !important;
+    color: #94A3B8 !important;
+}
+.dark-dropdown .Select-option:hover,
+.dark-dropdown .Select-option.is-focused {
+    background-color: #1C2540 !important;
+    color: #F1F5F9 !important;
+}
+
+/* Dash dropdown dark theme */
+.Select-control {
+    background-color: #161D2E !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    color: #F1F5F9 !important;
+    border-radius: 8px !important;
+}
+.Select-value-label, .Select-placeholder {
+    color: #94A3B8 !important;
+}
+.Select-arrow { border-top-color: #94A3B8 !important; }
+
+.dash-dropdown .Select-menu-outer {
+    background: #1C2540 !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+}
+.dash-dropdown .VirtualizedSelectOption {
+    color: #94A3B8 !important;
+    background: transparent !important;
+}
+.dash-dropdown .VirtualizedSelectFocusedOption {
+    background: rgba(99,102,241,0.15) !important;
+    color: #F1F5F9 !important;
+}
+
+/* ── Chart Cards ────────────────────────────────────────────────────── */
+.dash-graph {
+    border-radius: 0 0 16px 16px;
+}
+
+/* ── Animations ─────────────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.kpi-card {
+    animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track { background: #0F1624; }
+::-webkit-scrollbar-thumb {
+    background: #1C2540;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: #6366F1; }
+
+/* ══════════════════════════════════════════════════════════════════
+   NOUVEAUX STYLES — Dashboard Bancaire Premium (version finale)
+   ══════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ── Root containers ────────────────────────────────────────────── */
+.ds-root {
+    background: #060A10;
+    min-height: 100vh;
+    font-family: 'Space Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────── */
+.ds-tabs {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+    display: flex;
+    gap: 4px;
+}
+.ds-tabs .tab-content {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+.ds-tab {
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 10px !important;
+    color: #94A3B8 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 10px 20px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    margin-right: 4px !important;
+}
+.ds-tab:hover {
+    color: #F1F5F9 !important;
+    background: rgba(255,255,255,0.04) !important;
+}
+.ds-tab-selected {
+    background: rgba(99,102,241,0.15) !important;
+    border-color: rgba(99,102,241,0.35) !important;
+    color: #F1F5F9 !important;
+    font-weight: 700 !important;
+}
+
+/* ── Chart cards hover effect ───────────────────────────────────── */
+.ds-chart-card {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s ease !important;
+}
+.ds-chart-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(99,102,241,0.2) !important;
+    border-color: rgba(99,102,241,0.2) !important;
+}
+
+/* ── Dark Dropdown ──────────────────────────────────────────────── */
+.dark-dropdown .Select-control,
+.dark-dropdown .Select-menu-outer,
+.dark-dropdown .VirtualizedSelectFocusedOption,
+.dark-dropdown .VirtualizedSelectOption {
+    background-color: #1A2640 !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: #F1F5F9 !important;
+}
+.dark-dropdown .Select-value-label { color: #F1F5F9 !important; }
+.dark-dropdown .Select-placeholder { color: #475569 !important; }
+.dark-dropdown .Select-arrow { border-top-color: #475569 !important; }
+.dark-dropdown .Select-menu-outer { z-index: 999 !important; }
+
+/* Plotly chart dark background enforcement */
+.js-plotly-plot .plot-container .svg-container {
+    background: transparent !important;
+}
+.plotly-notifier { display: none !important; }
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0B1120; }
+::-webkit-scrollbar-thumb { background: #1A2640; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6366F1; }
+
+/* ── KPI card hover ─────────────────────────────────────────────── */
+[style*="borderLeft"] {
+    transition: transform 0.2s, box-shadow 0.2s !important;
+}
+[style*="borderLeft"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .ds-tabs { flex-wrap: wrap; }
+}
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.ds-chart-card {
+    animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}

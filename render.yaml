@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: datasphere-senegal
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:server --workers 2 --timeout 120
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: DB_NAME
+        value: banking_senegal
