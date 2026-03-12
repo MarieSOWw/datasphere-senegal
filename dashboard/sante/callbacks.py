@@ -5,9 +5,6 @@ Callbacks de l'application Dash
 Gestion de l'interactivité : filtrage des données et mise à jour
 des visualisations en temps réel.
 
- exploration visuelle des données pour
-identifier les patterns et anomalies.
-
 Auteur: Data Analyst
 Date: Janvier 2026
 """
@@ -17,6 +14,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 import numpy as np
+from io import StringIO  # ← FIX: nécessaire pour pd.read_json sur Python 3.14+
 
 
 def register_callbacks(app, df):
@@ -106,7 +104,7 @@ def register_callbacks(app, df):
         """
         Évolution mensuelle des admissions.
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         monthly_data = filtered_df.groupby('Mois').agg({
             'PatientID': 'count',
@@ -161,7 +159,7 @@ def register_callbacks(app, df):
         """
         Répartition des patients par département (pie chart).
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         dept_counts = filtered_df['Departement'].value_counts()
         
@@ -201,7 +199,7 @@ def register_callbacks(app, df):
         """
         Distribution des pathologies (bar chart horizontal).
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         pathologie_counts = filtered_df['Maladie'].value_counts().sort_values()
         
@@ -245,7 +243,7 @@ def register_callbacks(app, df):
         """
         Répartition des types de traitements (pie chart).
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         traitement_counts = filtered_df['Traitement'].value_counts()
         
@@ -289,7 +287,7 @@ def register_callbacks(app, df):
         """
         Coût moyen par pathologie.
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         cout_moyen = filtered_df.groupby('Maladie')['Cout'].mean().sort_values()
         
@@ -333,7 +331,7 @@ def register_callbacks(app, df):
         """
         Box plot des durées de séjour par pathologie.
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         medians = filtered_df.groupby('Maladie')['DureeSejour'].median().sort_values()
         
@@ -381,7 +379,7 @@ def register_callbacks(app, df):
         """
         Distribution par âge et sexe (barres groupées).
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         age_sexe = filtered_df.groupby(['CategorieAge', 'Sexe']).size().reset_index(name='Count')
         
@@ -436,7 +434,7 @@ def register_callbacks(app, df):
         """
         Histogramme de la distribution des âges.
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         fig = go.Figure(data=[go.Histogram(
             x=filtered_df['Age'],
@@ -480,7 +478,7 @@ def register_callbacks(app, df):
         """
         Scatter plot durée vs coût par département.
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         fig = px.scatter(
             filtered_df,
@@ -532,7 +530,7 @@ def register_callbacks(app, df):
         """
         Box plot du coût par jour selon la catégorie d'âge.
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         fig = go.Figure()
         
@@ -579,7 +577,7 @@ def register_callbacks(app, df):
         """
         Heatmap du coût moyen croisé département × pathologie.
         """
-        filtered_df = pd.read_json(filtered_data_json, orient='split')
+        filtered_df = pd.read_json(StringIO(filtered_data_json), orient='split')  # ← FIX
         
         pivot_cout = filtered_df.pivot_table(
             values='Cout',
