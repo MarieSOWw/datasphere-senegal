@@ -102,7 +102,7 @@ pip install -r requirements.txt
 
 Le fichier `.env` est déjà configuré :
 ```env
-MONGO_URI=mongodb+srv://rimasow0004_db_user:eraioAeBDCQ0KZP9@cluster0.ufnk5ky.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+MONGO_URI=<votre_mongo_uri>
 DB_NAME=banking_senegal
 ```
 
