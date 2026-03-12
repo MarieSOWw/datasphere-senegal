@@ -31,7 +31,7 @@ def _load_data():
             df["CategorieAge"] = pd.cut(
                 df["Age"], bins=[0, 18, 35, 50, 65, 120],
                 labels=["0-18 ans", "19-35 ans", "36-50 ans", "51-65 ans", "65+ ans"]
-            )
+            ).astype(str)  # ← FIX: Categorical → str pour JSON serialization
             return df
     except Exception:
         pass
@@ -49,7 +49,7 @@ def _load_data():
     df["CategorieAge"] = pd.cut(
         df["Age"], bins=[0, 18, 35, 50, 65, 120],
         labels=["0-18 ans", "19-35 ans", "36-50 ans", "51-65 ans", "65+ ans"]
-    )
+    ).astype(str)  # ← FIX: Categorical → str pour JSON serialization
     return df
 
 
